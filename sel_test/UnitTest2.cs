@@ -27,9 +27,9 @@ namespace sel_test
             LogInPage lpage = new LogInPage(hpage.driver);
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\smoodywo\Documents\practiceProjects\WHF_Practice\bestBuyLog.txt");
             hpage.loginBtn.Click();
+            Thread.Sleep(1500);
             string pgTitle = driver.Title;
             Assert.That(pgTitle, Is.EqualTo("Sign In to Developer.BestBuy.com"));
-            Thread.Sleep(1500);
             lpage.loginEmail(lines[0]);
             lpage.loginPassword(lines[1]);
             lpage.logInSnd();
