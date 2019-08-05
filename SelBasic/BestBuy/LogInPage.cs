@@ -6,14 +6,16 @@ namespace SelBasic.BestBuy
 {
     public class LogInPage : SelBase
     {
+        //####By definitions#########
         private By passwordPth = By.Id("fld-p1");
         private By emailPth = By.Id("fld-e");
         private By signInPth = By.XPath("/html/body/div[1]/section/main/div[1]/div/div/div/form/button");
         private By crtActPth = By.LinkText("Create Account");
         
-
+        //######constructor#####
         public LogInPage(IWebDriver dvr) => driver = dvr;
 
+        //######functions########
         public void loginEmail(string email)
         {
             IWebElement emailInput = driver.FindElement(emailPth);

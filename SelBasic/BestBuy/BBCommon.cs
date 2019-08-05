@@ -2,12 +2,14 @@
 using System;
 using OpenQA.Selenium;
 
+//This class is for the common header accross all pages on the developer.besbuy.com
+//Tt inherits form the selenium base class I created.
 namespace SelBasic.BestBuy
 {
     public class BBCommon : SelBase
     {
         
-
+        // #############By definitions###############
         private By headerPth = By.ClassName("header");
         private By homeLinkPth = By.XPath("/html/body/div[1]/div[1]/div[1]/a");
         private By ourApisPth = By.LinkText("OUR APIS");
@@ -20,6 +22,26 @@ namespace SelBasic.BestBuy
 
         private By logOutPth = By.LinkText("LOGOUT");
 
+        //#############Props###############################
+        public IWebElement header => driver.FindElement(headerPth);
+
+        public IWebElement home => driver.FindElement(homeLinkPth);
+
+        public IWebElement ourApis => header.FindElement(ourApisPth);
+
+        public IWebElement documentation => header.FindElement(documentationPth);
+
+        public IWebElement support => header.FindElement(supportPth);
+
+        public IWebElement loginBtn => header.FindElement(logInPth);
+
+        public IWebElement signUpBtn => header.FindElement(signUpPth);
+
+        public IWebElement apiStatus => header.FindElement(apiStatusPth);
+
+        public IWebElement newsletter => header.FindElement(newsLetterPth);
+
+        //########Constructors######################
         public BBCommon()
         {
             
@@ -31,26 +53,7 @@ namespace SelBasic.BestBuy
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
-
-        public IWebElement Header => driver.FindElement(headerPth);
-
-        public IWebElement home => driver.FindElement(homeLinkPth);
-
-        public IWebElement ourApis => Header.FindElement(ourApisPth);
-
-        public IWebElement documentation => Header.FindElement(documentationPth);
-
-        public IWebElement support => Header.FindElement(supportPth);
-
-        public IWebElement loginBtn => Header.FindElement(logInPth);
-
-        public IWebElement signUpBtn => Header.FindElement(signUpPth);
-
-        public IWebElement apiStatus => Header.FindElement(apiStatusPth);
-
-        public IWebElement newsletter => Header.FindElement(newsLetterPth);
-
-
+        //Functions###########################
         public void logout()
         {
             if(driver.FindElement( By.LinkText("LOGOUT")).Displayed)

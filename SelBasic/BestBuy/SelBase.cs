@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 
+//My Selenium base class establishing the necesities accross all page models
+
 namespace SelBasic.BestBuy
 {
     public class SelBase

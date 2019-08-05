@@ -15,6 +15,7 @@ namespace sel_test
         public void ready()
         {
             driver = new FirefoxDriver(Environment.CurrentDirectory);
+            driver.Url = "https://developer.bestbuy.com/";
 
         }
 
@@ -22,33 +23,30 @@ namespace sel_test
         [Test]
         public void bbSignInTest()
         {
-            driver.Url = "https://developer.bestbuy.com/";
+            
             BBHome hpage = new BBHome(driver);
             LogInPage lpage = new LogInPage(hpage.driver);
             string[] lines = System.IO.File.ReadAllLines(@"C:\Users\smoodywo\Documents\practiceProjects\WHF_Practice\bestBuyLog.txt");
             hpage.loginBtn.Click();
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
+
             string pgTitle = driver.Title;
             Assert.That(pgTitle, Is.EqualTo("Sign In to Developer.BestBuy.com"));
             lpage.loginEmail(lines[0]);
             lpage.loginPassword(lines[1]);
             lpage.logInSnd();
             Thread.Sleep(1500);
-            // IList<IWebElement> temp2 = bbCommon.driver.FindElements(By.LinkText("DASHBOARD"));
+
             Assert.That(driver.Title, Is.EqualTo("Best Buy | Official Online Store | Shop Now & Save"));
             driver.Url = "https://developer.bestbuy.com/";
             IList<IWebElement> temp = hpage.driver.FindElements(By.LinkText("DASHBOARD"));
-            Assert.That(temp.Count, Is.EqualTo(1));
-
-            // lpage.close();
-            
+            Assert.That(temp.Count, Is.EqualTo(1));            
         }
 
         [Test]
-        public void BBHomeTest()
+        public void BBHeaderTest()
         {
-            // page = new bbHome();
-            driver.Url = "https://developer.bestbuy.com/";
+            // driver.Url = "https://developer.bestbuy.com/";
             BBHome hpage = new BBHome(driver);
             Assert.That(hpage.title, Is.EqualTo("Best Buy Developer Portal"));
             hpage.documentation.Click();
@@ -57,10 +55,42 @@ namespace sel_test
             Assert.That(hpage.title, Is.EqualTo("Support"));
             hpage.apiStatus.Click();
             Assert.That(hpage.title, Is.EqualTo("API Status"));
-            // page.home.Click();
-            // Assert.That(page.title, Is.EqualTo("Best Buy Developer Portal"));
-            // hpage.close();
+        }
 
+        [Test]
+        [Category("HomePage")]
+        public void BBHomeTestDoc()
+        {
+           BBHome hpage = new BBHome(driver); 
+           hpage.docBdy.Click();
+           Assert.That(hpage.title, Is.EqualTo("Documentation"));
+        }
+
+        [Test]
+        [Category("HomePage")]
+        public void BBHomeTestTApi()
+        {
+           BBHome hpage = new BBHome(driver); 
+           hpage.tryApi.Click();
+           Assert.That(hpage.title, Is.EqualTo("Best Buy APIs :: Query Builder"));
+        }
+
+        [Test]
+        [Category("HomePage")]
+        public void BBHomeTestPlyGrnd()
+        {
+           BBHome hpage = new BBHome(driver); 
+           hpage.plyGrnd.Click();
+           Assert.That(hpage.driver.Url, Is.EqualTo("https://github.com/BestBuy/api-playground"));
+        }
+
+        [Test]
+        [Category("HomePage")]
+        public void BBHomeTestDevSup()
+        {
+           BBHome hpage = new BBHome(driver); 
+           hpage.devSup.Click();
+           Assert.That(hpage.title, Is.EqualTo("Support"));
         }
 
         [TearDown]
