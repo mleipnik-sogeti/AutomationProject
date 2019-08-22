@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using SelBasic.BestBuy;
 
-namespace sel_test
+namespace SelTest
 {
     public class UnitTest2
     {
@@ -35,7 +35,7 @@ namespace sel_test
             lpage.loginEmail(lines[0]);
             lpage.loginPassword(lines[1]);
             lpage.logInSnd();
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
 
             Assert.That(driver.Title, Is.EqualTo("Best Buy | Official Online Store | Shop Now & Save"));
             driver.Url = "https://developer.bestbuy.com/";

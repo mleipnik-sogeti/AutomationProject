@@ -3,7 +3,7 @@ using System;
 using OpenQA.Selenium;
 
 //This class is for the common header accross all pages on the developer.besbuy.com
-//Tt inherits form the selenium base class I created.
+//It inherits form the selenium base class I created.
 namespace SelBasic.BestBuy
 {
     public class BBCommon : SelBase

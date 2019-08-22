@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
-
-//My Selenium base class establishing the necesities accross all page models
+/*
+My Selenium base class establishing the necesities accross all page models
+This class includes things such as the driver and the close function
+*/
 
 namespace SelBasic.BestBuy
 {
