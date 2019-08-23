@@ -18,7 +18,6 @@ Download the appropriate gecko driver from https://github.com/mozilla/geckodrive
 Move the geckodriver.exe into the AutomationProject/SelBasic folder and into the AutomationProject/SelTest/Bin/Debug/netcoreapp2.1 folder.
 To run the project in the command line type dotnet test
 
-# Getting started:
 To run specific test follow the documentation on https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test?tabs=netcore21
 
 examples are listed under cheetsheet
